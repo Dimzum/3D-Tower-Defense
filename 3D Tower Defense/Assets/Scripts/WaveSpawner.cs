@@ -10,7 +10,7 @@ public class WaveSpawner : MonoBehaviour {
 
     public float timeBetweenWaves = 15.5f;
     private float _countdown = 2.5f;
-    private float spawnDelay = 0.75f;
+    private float spawnDelay = 0.55f;
 
     public Text waveCountdownText;
     
@@ -24,7 +24,7 @@ public class WaveSpawner : MonoBehaviour {
 
         _countdown -= Time.deltaTime;
 
-        waveCountdownText.text = Mathf.Floor(_countdown).ToString();
+        waveCountdownText.text = "Next wave: " + Mathf.Floor(_countdown).ToString();
     }
 
     IEnumerator SpawnWave() {
@@ -38,6 +38,6 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     void SpawnEnemy() {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemyPrefab, spawnPoint.position - new Vector3(0, 1, 0), spawnPoint.rotation);
     }
 }
