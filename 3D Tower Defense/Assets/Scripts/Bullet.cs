@@ -5,8 +5,13 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     private Transform _target;
+    public Transform Target {
+        get { return _target; }
+        set { _target = value; }
+    }
 
-    public float speed = 30f;
+    public float speed = 70f;
+    public float explosionRadius = 0f;
     public GameObject impactEffect;
 
     public void Seek(Transform target) {
@@ -29,13 +34,38 @@ public class Bullet : MonoBehaviour {
         }
 
         transform.Translate(dir.normalized * distanceThisFrame / 5f, Space.World);
+        transform.LookAt(_target);
 	}
 
     void HitTarget () {
         GameObject bulletEffect = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(bulletEffect, 2f);
+        Destroy(bulletEffect, 5f);
 
-        Destroy(_target.gameObject);
+        if (explosionRadius > 0) {
+            Explode();
+        } else {
+            Damage(_target);
+        }
+        
         Destroy(gameObject);
+    }
+
+    void Explode() {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+
+        foreach (Collider collider in colliders) {
+            if (collider.tag == "Enemy") {
+                Damage(collider.transform);
+            }
+        }
+    }
+
+    void Damage(Transform enemy) {
+        Destroy(enemy.gameObject);
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

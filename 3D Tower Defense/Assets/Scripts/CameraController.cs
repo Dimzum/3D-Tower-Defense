@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
+    private Vector3 originalPos;
     private bool isCameraLocked = false;
 
     public float panSpeed = 30f;
@@ -14,32 +15,44 @@ public class CameraController : MonoBehaviour {
     private float minY = 10f;
     private float maxY = 80f;
 
+    private void Start() {
+        originalPos = transform.position;
+    }
+
     // Update is called once per frame
     void Update () {
-        // Toggle isCameraLocked
+        // Snap the camera focus back to the map by using the original position
         if (Input.GetKeyDown(KeyCode.Space)) {
+            transform.position = originalPos;
+        }
+
+            // Toggle isCameraLocked
+            if (Input.GetKeyDown(KeyCode.Escape)) {
             isCameraLocked = !isCameraLocked;
             if (isCameraLocked) { Debug.Log("Locked"); }
             if (!isCameraLocked) { Debug.Log("Unlocked"); }
         }
 
+        // Check is camera is locked
         if (isCameraLocked) {
             return;
         }
 
-		if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness) {
+        // Camera movement
+        // Mouse camera movement is currently disabled
+		if (Input.GetKey("w") /*|| Input.mousePosition.y >= Screen.height - panBorderThickness*/) {
             transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
         }
 
-        if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness) {
+        if (Input.GetKey("a") /*|| Input.mousePosition.x <= panBorderThickness*/) {
             transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
         }
 
-        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness) {
+        if (Input.GetKey("s") /*|| Input.mousePosition.y <= panBorderThickness*/) {
             transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
         }
 
-        if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness) {
+        if (Input.GetKey("d") /*|| Input.mousePosition.x >= Screen.width - panBorderThickness*/) {
             transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
         }
 

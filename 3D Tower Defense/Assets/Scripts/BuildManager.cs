@@ -18,13 +18,15 @@ public class BuildManager : MonoBehaviour {
     #endregion
 
     public GameObject basicTurretPrefab;
-
-    private void Start() {
-        _turretToBuild = basicTurretPrefab;
-    }
+    public GameObject missileLauncherPrefab;
 
     private GameObject _turretToBuild;
     public GameObject TurretToBuild {
         get { return _turretToBuild; }
+        set { _turretToBuild = value; }
+    }
+
+    public void SetTurretToBuild(GameObject turret) {
+        TurretToBuild = turret;
     }
 }
