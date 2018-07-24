@@ -1,1 +1,12 @@
-Shop - changed horizontal to vertical layout group
+/* My additions to the game */
+
+Shop 
+- changed horizontal to vertical layout group
+
+// Part 11-12 of Brackeys' 3D Tower Defense tutorial
+Nodes 
+- moved start and end nodes
+UI
+- Wave info at the top of the map
+- Shop at the right of the map. Also, moved the shop UI to be consistent with other UI
+- Player stats at the bottom of the map

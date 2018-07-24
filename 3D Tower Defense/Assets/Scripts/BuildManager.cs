@@ -20,13 +20,33 @@ public class BuildManager : MonoBehaviour {
     public GameObject basicTurretPrefab;
     public GameObject missileLauncherPrefab;
 
-    private GameObject _turretToBuild;
-    public GameObject TurretToBuild {
+    public GameObject buildEffect;
+
+    private TurretBlueprint _turretToBuild;
+    public TurretBlueprint TurretToBuild {
         get { return _turretToBuild; }
         set { _turretToBuild = value; }
     }
 
-    public void SetTurretToBuild(GameObject turret) {
-        TurretToBuild = turret;
+    public bool CanBuild { get { return _turretToBuild != null; } }
+    public bool HasEnoughGold { get { return PlayerStats.Gold >= _turretToBuild.cost; } }
+
+    public void BuildTurretOn(Node node) {
+        if (PlayerStats.Gold < _turretToBuild.cost) {
+            Debug.Log("Not enough gold to build that!");
+            return;
+        }
+
+        PlayerStats.Gold -= _turretToBuild.cost;
+
+        GameObject turret = Instantiate(_turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity) as GameObject;
+        node.Turret = turret;
+
+        GameObject effect = Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity) as GameObject;
+        Destroy(effect, 5f);
+    }
+
+    public void SelectTurretToBuild(TurretBlueprint turret) {
+        _turretToBuild = turret;
     }
 }
