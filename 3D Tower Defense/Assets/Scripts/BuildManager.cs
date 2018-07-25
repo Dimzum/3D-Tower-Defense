@@ -17,16 +17,13 @@ public class BuildManager : MonoBehaviour {
     }
     #endregion
 
-    public GameObject basicTurretPrefab;
-    public GameObject missileLauncherPrefab;
-
-    public GameObject buildEffect;
-
     private TurretBlueprint _turretToBuild;
     public TurretBlueprint TurretToBuild {
         get { return _turretToBuild; }
         set { _turretToBuild = value; }
     }
+
+    public GameObject buildEffect;
 
     public bool CanBuild { get { return _turretToBuild != null; } }
     public bool HasEnoughGold { get { return PlayerStats.Gold >= _turretToBuild.cost; } }
