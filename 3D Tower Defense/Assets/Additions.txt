@@ -10,3 +10,6 @@ UI
 - Wave info at the top of the map
 - Shop at the right of the map. Also, moved the shop UI to be consistent with other UI
 - Player stats at the bottom of the map
+
+// Part 15-16 of Brackeys' 3D Tower Defense tutorial
+Enemy - created a seperate script for enemy stats

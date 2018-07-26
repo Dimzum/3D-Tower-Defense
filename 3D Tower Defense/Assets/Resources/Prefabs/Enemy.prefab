@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 23579451142115568}
   - component: {fileID: 135314312615906608}
   - component: {fileID: 114054596100303762}
+  - component: {fileID: 114715171490709880}
+  - component: {fileID: 114814190059027348}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -37,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337076933013564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70, y: 1, z: -5}
+  m_LocalPosition: {x: 70, y: 1.3, z: -5}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,10 +98,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c465c595dbffbbb4cb75a6b40f0f4f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
-  speed: 5
   deathEffect: {fileID: 1711084883450298, guid: ee4cea4b308f86c4095d21c732d1188b,
     type: 2}
+--- !u!114 &114715171490709880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1337076933013564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e999684b7e5a30a4e9efbf885b346c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114814190059027348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1337076933013564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865d6c5b74f7b9e40a7e6d70a230fd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
+  speed: 5.5
 --- !u!135 &135314312615906608
 SphereCollider:
   m_ObjectHideFlags: 1

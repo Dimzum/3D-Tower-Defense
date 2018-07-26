@@ -39,6 +39,6 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     void SpawnEnemy() {
-        Instantiate(enemyPrefab, spawnPoint.position - new Vector3(0, 1, 0), spawnPoint.rotation);
+        Instantiate(enemyPrefab, spawnPoint.position - new Vector3(0, 1.2f, 0), spawnPoint.rotation);
     }
 }
