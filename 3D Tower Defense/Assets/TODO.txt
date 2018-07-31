@@ -1,3 +1,4 @@
-Node.cs - Line 21: Display text on screen
+- Make the main menu nicer
 
-Add Main Menu
+Main Menu and Pause Menu
+- Add an options menu

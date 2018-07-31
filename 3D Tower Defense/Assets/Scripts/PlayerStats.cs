@@ -7,11 +7,15 @@ public class PlayerStats : MonoBehaviour {
     private int startingHealth = 20;
     public static int Health;
 
-    private int startingGold = 200;//75;
+    public int startingGold = 85;
     public static int Gold;
+
+    public static int rounds;
 
     private void Start() {
         Health = startingHealth;
         Gold = startingGold;
+
+        rounds = 0;
     }
 }

@@ -17,6 +17,12 @@ public class BuildManager : MonoBehaviour {
     }
     #endregion
 
+    private Node _selectedNode;
+    public Node SelectedNode {
+        get { return _selectedNode; }
+        set { _selectedNode = value; }
+    }
+
     private TurretBlueprint _turretToBuild;
     public TurretBlueprint TurretToBuild {
         get { return _turretToBuild; }
@@ -24,26 +30,41 @@ public class BuildManager : MonoBehaviour {
     }
 
     public GameObject buildEffect;
+    public GameObject sellEffect;
+
+    public TurretUI turretUI;
 
     public bool CanBuild { get { return _turretToBuild != null; } }
     public bool HasEnoughGold { get { return PlayerStats.Gold >= _turretToBuild.cost; } }
+    
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            // Hide turretUI
+            DeselectNode();
+        }
+    }
 
-    public void BuildTurretOn(Node node) {
-        if (PlayerStats.Gold < _turretToBuild.cost) {
-            Debug.Log("Not enough gold to build that!");
+    public void SelectNode(Node node) {
+        if (_selectedNode == node) {
+            DeselectNode();
             return;
         }
 
-        PlayerStats.Gold -= _turretToBuild.cost;
+        _selectedNode = node;
+        _turretToBuild = null;
 
-        GameObject turret = Instantiate(_turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity) as GameObject;
-        node.Turret = turret;
+        turretUI.SetTarget(node);
+    }
 
-        GameObject effect = Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity) as GameObject;
-        Destroy(effect, 5f);
+    public void DeselectNode() {
+        _selectedNode = null;
+        turretUI.HideUI();
     }
 
     public void SelectTurretToBuild(TurretBlueprint turret) {
         _turretToBuild = turret;
+        _selectedNode = null;
+
+        turretUI.HideUI();
     }
 }

@@ -3,7 +3,7 @@
 Shop 
 - changed horizontal to vertical layout group
 
-// Part 11-12 of Brackeys' 3D Tower Defense tutorial
+// July 23 2018
 Nodes 
 - moved start and end nodes
 UI
@@ -11,5 +11,25 @@ UI
 - Shop at the right of the map. Also, moved the shop UI to be consistent with other UI
 - Player stats at the bottom of the map
 
-// Part 15-16 of Brackeys' 3D Tower Defense tutorial
+// July 25 2018
 Enemy - created a seperate script for enemy stats
+
+// July 26 2018
+Shop - changed render mode from 'World Space' to 'Screen Space - Overlay'
+
+// July 27 2018
+Turrets 
+- Added a sniper turret (Long range, low fire rate)
+- Has its own bullet material and bullet impact effect
+
+// July 28 2018
+Scripts
+- Created a CheatCodeMaster script that manages chaet codes (used for testing)
+
+// July 30 2018
+Pause Menu
+- Desgined my own pause menu
+- The restart option, restarts the current stage
+Game Over
+- Changed 'Retry' to 'Play again'
+- Play again option restarts the player from stage 1

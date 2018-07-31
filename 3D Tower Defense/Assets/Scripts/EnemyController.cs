@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour {
             GetNextWaypoint();
         }
 
-        _enemyStats.Speed = _enemyStats.baseSpeed;
+        _enemyStats.Speed = _enemyStats.maxSpeed;
     }
 
     void GetNextWaypoint() {
@@ -45,6 +45,6 @@ public class EnemyController : MonoBehaviour {
     }
 
     public void Slow(float percent) {
-        _enemyStats.Speed = _enemyStats.baseSpeed * (1f - percent);
+        _enemyStats.Speed = _enemyStats.maxSpeed * (1f - percent);
     }
 }

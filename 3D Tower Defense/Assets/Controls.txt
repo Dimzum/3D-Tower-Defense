@@ -1,0 +1,9 @@
+// CHEAT CODES
+F1 - End Game
+
+// CONTROLS
+WASD - Camera Movement
+Space - Snap camera focus back to map
+` (tilde key) - Lock camera movement
+Mouse Scroll - Zoom In/Out
+Esc/Click selected turret - hide turret menu
