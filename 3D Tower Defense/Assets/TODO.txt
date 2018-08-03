@@ -1,4 +1,21 @@
-- Make the main menu nicer
-
 Main Menu and Pause Menu
 - Add an options menu
+
+Create Stage_2
+WaveSpawner.cs
+- When all waves are finished, transition to next stage
+
+Wave.cs
+- Implement multiple enemies in a wave
+
+Game Modes - Create a scene for selecting a game mode
+1. Endless Mode
+- this will be an endless mode (keep spawning waves until the player runs out of lives)
+- this means i'll have to make changes to the WaveSpawner script to make the enemies progressively get tougher
+2. Story Mode
+- certain number of stages
+- each stage will have a certain number of waves
+- stages will get progressively harder
+
+LevelSelector.cs
+- change back function to load game mode selection scene

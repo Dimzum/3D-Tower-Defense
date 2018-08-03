@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
-
-    public GameObject pauseMenuUI;
-
+    
     public SceneFader sceneFader;
 
-    public string mainMenuSceneName = "MainMenu";
+    public GameObject pauseMenuUI;
 
     public void TogglePauseMenu() {
         GameMaster.isGamePaused = !GameMaster.isGamePaused;
@@ -44,6 +42,6 @@ public class PauseMenu : MonoBehaviour {
     public void ExitToMainMenu() {
         TogglePauseMenu();
         //SceneManager.LoadScene(mainMenuSceneName);
-        sceneFader.FadeTo(mainMenuSceneName);
+        sceneFader.FadeTo(SceneFader.mainMenuSceneName);
     }
 }

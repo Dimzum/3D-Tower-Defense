@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameMaster : MonoBehaviour {
-
+    
     public GameObject gameOverUI;
+    public GameObject levelCompleteUI;
 
     public PauseMenu pauseMenu;
 
@@ -33,5 +34,10 @@ public class GameMaster : MonoBehaviour {
     public void EndGame() {
         isGameOver = true;
         gameOverUI.SetActive(true);
+    }
+
+    public void LevelComplete() {
+        isGameOver = true;
+        levelCompleteUI.SetActive(true);
     }
 }

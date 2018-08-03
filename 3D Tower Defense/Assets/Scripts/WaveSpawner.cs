@@ -5,41 +5,63 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour {
 
-    public Transform enemyPrefab;
+    public GameMaster GM;
+
+    public static int enemiesAlive;
+
+    public Wave[] waves;
     public Transform spawnPoint;
 
-    public float timeBetweenWaves = 15f;
+    public float timeBetweenWaves = 5f;
     private float _countdown = 3f;
-    private float spawnDelay = 0.55f;
 
     public Text waveCountdownText;
     
     private int _waveIndex = 0;
 
+    private void Start() {
+        enemiesAlive = 0;
+    }
+
     private void Update() {
+        // Stops another wave from spawning until all enemies are killed or have reached the end
+        if (enemiesAlive > 0) { return; }
+
+        // Reset wave index
+        if (_waveIndex > waves.Length) {
+            GM.LevelComplete();
+            this.enabled = false;
+        }
+
         if (_countdown <= 0f) {
             StartCoroutine(SpawnWave());
             _countdown = timeBetweenWaves;
+            return;
         }
 
+        // Decrease timer
         _countdown -= Time.deltaTime;
         _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
 
+        // Display timer
         waveCountdownText.text = "Next wave: " + string.Format("{0:00.00}", _countdown);
     }
 
     IEnumerator SpawnWave() {
-        _waveIndex++;
-        PlayerStats.rounds++;
+        PlayerStats.roundsSurvived++;
 
-        //for (int i = 0; i < Mathf.Pow(_waveIndex, (_waveIndex - 1)); i++) {
-        for (int i = 0; i < _waveIndex; i++) {
-            SpawnEnemy();
-            yield return new WaitForSeconds(spawnDelay);
+        Wave wave = waves[_waveIndex];
+        enemiesAlive = wave.numEnemies;
+
+        for (int i = 0; i < wave.numEnemies; i++) {
+            SpawnEnemy(wave.enemy);
+            yield return new WaitForSeconds(1f / wave.spawnRate);
         }
+
+        _waveIndex++;
     }
 
-    void SpawnEnemy() {
-        Instantiate(enemyPrefab, spawnPoint.position - new Vector3(0, 1.2f, 0), spawnPoint.rotation);
+    void SpawnEnemy(GameObject enemy) {
+        Instantiate(enemy, spawnPoint.position - Vector3.up, spawnPoint.rotation);
     }
 }

@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneFader : MonoBehaviour {
 
+    // Static variables for scene names
+    public static string mainMenuSceneName = "MainMenu";
+    public static string levelSelectSceneName = "LevelSelect";
+    public static string level01SceneName = "Level01";
+    public static string level02SceneName = "Level02";
+    public static string level03SceneName = "Level03";
+
     public Image img;
     public AnimationCurve curve;
 

@@ -33,3 +33,7 @@ Pause Menu
 Game Over
 - Changed 'Retry' to 'Play again'
 - Play again option restarts the player from stage 1
+
+// August 2 2018
+Level Complete UI
+- Designed my own UI

@@ -8,7 +8,7 @@ public class EnemyStats : MonoBehaviour {
     private Enemy _enemy;
     
     [Header("Stats")]
-    private float _maxHealth = 30;
+    public float _maxHealth = 30;
     public float MaxHealth {
         get { return _maxHealth; }
         set { _maxHealth = value; }
@@ -22,19 +22,21 @@ public class EnemyStats : MonoBehaviour {
         set { _speed = value; }
     }
 
+    private int goldDropAmount;
+    public int minGoldDrop = 10;
+    public int maxGoldDrop = 15;
+
     [Header("Unity Editor")]
     public Image healthBar;
 
-    private int goldDropAmount;
-    private int minDrop = 10;
-    private int maxDrop = 15;
+    private bool isDead = false;
     
     private void Start() {
         _enemy = GetComponent<Enemy>();
 
         health = _maxHealth;
         _speed = maxSpeed;
-        goldDropAmount = Random.Range(minDrop, maxDrop);
+        goldDropAmount = Random.Range(minGoldDrop, maxGoldDrop);
     }
 
     public void TakeDamage(float amount) {
@@ -42,16 +44,20 @@ public class EnemyStats : MonoBehaviour {
         // Enemy health UI
         healthBar.fillAmount = health / _maxHealth;
 
-        if (health <= 0) {
+        if (health <= 0 && !isDead) {
             Die();
         }
     }
 
     void Die() {
+        isDead = true;
+
         PlayerStats.Gold += goldDropAmount;
 
         GameObject effect = Instantiate(_enemy.deathEffect, transform.position, Quaternion.identity) as GameObject;
         Destroy(effect, 2f);
+
+        WaveSpawner.enemiesAlive--;
         Destroy(gameObject);
     }
 }

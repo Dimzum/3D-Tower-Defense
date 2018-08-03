@@ -41,6 +41,7 @@ public class EnemyController : MonoBehaviour {
 
     void DestinationReached() {
         PlayerStats.Health--;
+        WaveSpawner.enemiesAlive--;
         Destroy(gameObject);
     }
 

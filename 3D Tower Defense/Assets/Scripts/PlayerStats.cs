@@ -10,12 +10,12 @@ public class PlayerStats : MonoBehaviour {
     public int startingGold = 85;
     public static int Gold;
 
-    public static int rounds;
+    public static int roundsSurvived;
 
     private void Start() {
         Health = startingHealth;
         Gold = startingGold;
 
-        rounds = 0;
+        roundsSurvived = 0;
     }
 }
