@@ -24,6 +24,6 @@ public class LevelSelector : MonoBehaviour {
     }
 
     public void Back() {
-        sceneFader.FadeTo("MainMenu"); //Temp -> change to game mode scene
+        sceneFader.FadeTo(SceneFader.gameModeSelectSceneName);
     }
 }

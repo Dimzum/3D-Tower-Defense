@@ -7,12 +7,9 @@ public class MainMenuMaster : MonoBehaviour {
 
     public SceneFader sceneFader;
 
-    public string levelToLoad = "Stage_1";
-
     // Start the Game - load stage 1
 	public void Play() {
-        //SceneManager.LoadScene(levelToLoad);
-        sceneFader.FadeTo(levelToLoad);
+        sceneFader.FadeTo(SceneFader.gameModeSelectSceneName);
     }
 
     // Instructions and controls for the player

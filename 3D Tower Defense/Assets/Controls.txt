@@ -1,5 +1,8 @@
 // CHEAT CODES
-F1 - End Game
+1 - Set gold to 9999
+9 - Complete level
+0 - End Game
+
 
 // CONTROLS
 WASD - Camera Movement

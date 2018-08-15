@@ -16,6 +16,11 @@ public class CheatCodeMaster : MonoBehaviour {
             GM.EndGame();
         }
 
+        // Autocomplete Level
+        if (Input.GetKeyDown(KeyCode.Alpha9)) {
+            GM.LevelComplete();
+        }
+
         // Set gold to 9999
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             PlayerStats.Gold = goldAmount;
